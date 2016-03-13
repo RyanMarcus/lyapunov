@@ -23,16 +23,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 int sequence[12] = {1,1,1,1,1,1,0,0,0,0,0,0};
 int seqLength = 12;
+int N = 10;
 
-float lyExp(float a, float b);
 
-void generateFractal(float left,
-		     float bottom,
-		     float width,
-		     float height,
-		     int windowWidth,
-		     int windowHeight,
-		     float* window) {
+void lyExp(float a, float b, float* window, float* iterWindow, int iterations);
+
+int generateFractal(float left,
+		    float bottom,
+		    float width,
+		    float height,
+		    int windowWidth,
+		    int windowHeight,
+		    float* window,
+		    float* iterWindow,
+		    int iterations) {
+
     
     for (int y = 0; y < windowHeight; y++) {
 	for (int x = 0; x < windowWidth; x++) {
@@ -42,35 +47,53 @@ void generateFractal(float left,
 	    a = intRange(x, windowWidth) * width + left;
 	    b = intRange(y, windowHeight) * height + bottom;
 
-	    window[x + y*windowWidth] = lyExp(a, b);
+	    lyExp(a, b,
+		  window + (x + y * windowWidth),
+		  iterWindow + (x + y * windowWidth),
+		  iterations);
+	    
 	}
     }
+
+    return N;
+
     
     
 }
 
-int N = 1000;
 
-float lyExp(float a, float b) {
-    float accum = 0.f;
-    float iter = 0.5f;
+void lyExp(float a, float b, float* accum, float* iter, int iteration) {
     for (int i = 0; i < N; i++) {
 	float r = (sequence[i % seqLength] == 1 ? b : a);
 	// progress the iterator
-	iter = r * iter * (1.f - iter);
-	accum += logf(fabs(r * (1.f - 2.f * iter))) * 1.f/(float)N;
+	*iter = r * (*iter) * (1.f - (*iter));
 
-	//printf("%f %f -> %f %f at %d (%f)\n", a, b, accum, iter, i, r);
+	// do a running average...
+        float newTerm = logf(fabs(r * (1.f - 2.f * (*iter))));
+
+	*accum = *accum + ((newTerm - *accum) / (float)(iteration + i + 1));
+
+	printf("%f %f -> %f %f at %d (%f)\n", a, b, *accum, *iter, i, r);
     }
 
-    return accum;
-    
 }
 
 int main() {
-    float values[10000];
-    generateFractal(2.5f, 3.0f, 1.0f, 1.0f, 100, 100, values);
+    float values[100*100];
+    float iterValues[100*100];
+    int iterations = 0;
+    
+    for (int i = 0; i < 100*100; i++) {
+	values[i] = 0.f;
+	iterValues[i] = 0.5f;
+    }
+	   
 
+    for (int i = 0; i < 100; i++) {
+	iterations += generateFractal(2.5f, 2.5f, 1.0f, 1.0f, 100, 100,
+				      values, iterValues,
+				      iterations);
+    }
     for (int i = 0; i < 100; i++) {
 	for (int j = 0; j < 100; j++) {
 	    printf("%0.2f ", values[i*10 + j]);
