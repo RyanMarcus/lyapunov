@@ -1,29 +1,31 @@
 /*
-Copyright 2016 Ryan Marcus
+  Copyright 2016 Ryan Marcus
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 
 #define intRange(a, b) ((float) a / (float) b)
+#define ITERATIONS_PER_ROUND 5
 
 int sequence[12] = {1,1,1,1,1,1,0,0,0,0,0,0};
 int seqLength = 12;
-int N = 10;
 
 
 void lyExp(float a, float b, float* window, float* iterWindow, int iterations);
@@ -55,7 +57,8 @@ int generateFractal(float left,
 	}
     }
 
-    return N;
+
+    return ITERATIONS_PER_ROUND;
 
     
     
@@ -63,7 +66,7 @@ int generateFractal(float left,
 
 
 void lyExp(float a, float b, float* accum, float* iter, int iteration) {
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < ITERATIONS_PER_ROUND; i++) {
 	float r = (sequence[i % seqLength] == 1 ? b : a);
 	// progress the iterator
 	*iter = r * (*iter) * (1.f - (*iter));
@@ -73,7 +76,7 @@ void lyExp(float a, float b, float* accum, float* iter, int iteration) {
 
 	*accum = *accum + ((newTerm - *accum) / (float)(iteration + i + 1));
 
-	printf("%f %f -> %f %f at %d (%f)\n", a, b, *accum, *iter, i, r);
+	//printf("%f %f -> %f %f at %d (%f)\n", a, b, *accum, *iter, i, r);
     }
 
 }
