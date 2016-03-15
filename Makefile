@@ -3,7 +3,7 @@ all: fract.js render.min.js
 
 
 fract.js: fract.c
-	emcc  -Wall -O2 fract.c -o fract.js -lm -g -s ASSERTIONS=2 -s EXPORTED_FUNCTIONS="['_generateFractal', '_randomizeSequence']"
+	emcc  -Wall -O3 fract.c -o fract.js -lm --closure 1 -s EXPORTED_FUNCTIONS="['_generateFractal', '_randomizeSequence']"
 
 render.min.js: render.js
 	babel render.js | uglifyjs > render.min.js

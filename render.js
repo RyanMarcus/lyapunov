@@ -133,11 +133,11 @@ function doRender() {
     };
 
 
-    var steps = 35;
+    var steps = 30;
     for (var t = 0; t < steps; t++) {
-	setTimeout(partialRender, (t/steps) * 2000 + 1000);
+	setTimeout(partialRender, (t/steps) * 2500 + 1000);
     }
-    setTimeout(blur, 3000);
+    //setTimeout(blur, 6500);
 
 
 }
@@ -162,18 +162,15 @@ function fixCanvasSize() {
 
 
 
-
-function blur() {
+/*function blur() {
     Caman("#fract", function () {
 	console.log("blur!");
 	this.processKernel("Gauss Blur", [
-	    0.011362,0.014962,0.017649,0.018648,0.017649,0.014962,0.011362,
-	    0.014962,0.019703,0.02324,0.024556,0.02324,0.019703,0.014962,
-	    0.017649,0.02324,0.027413,0.028964,0.027413,0.02324,0.017649,
-	    0.018648,0.024556,0.028964,0.030603,0.028964,0.024556,0.018648,
-	    0.017649,0.02324,0.027413,0.028964,0.027413,0.02324,0.017649,
-	    0.014962,0.019703,0.02324,0.024556,0.02324,0.019703,0.014962,
-	    0.011362,0.014962,0.017649,0.018648,0.017649,0.014962,0.011362,
+	    0.039206,0.039798,0.039997,0.039798,0.039206,
+	    0.039798,0.040399,0.040601,0.040399,0.039798,
+	    0.039997,0.040601,0.040804,0.040601,0.039997,
+	    0.039798,0.040399,0.040601,0.040399,0.039798,
+	    0.039206,0.039798,0.039997,0.039798,0.039206,
 	    
 	]);
 
@@ -182,10 +179,10 @@ function blur() {
 
     });
     
-}
+}*/
 
 
-var labels = ["programmer","amateur hacker","machine learner","model trainer","python charmer","java drinker","avid valgrind user","still upset about hg","neural network backpropagater","vinyl record owner","head-fi'er","phd student","researcher","computer scientist","fully gdb dependent","agile, like a cheetah","los alamos national laboratory","brandeis university","university of arizona","hp vertica","hubspot","occasional gym-goer","feminist","long-time pandora subscriber","math enthusiast","database normalizer","big-o calculator","nodejs dev","angular proponent","jquery hater","css novice","webfont curious","extremely color-blind","judith butler reader","bell hooks is my jam","sci-fi lover","eclipse user","wanna-be emacs guru","ruby polisher","c guy","x86 spinner","gpgpu accelerator", "go-pher", "sql querier", "npm installer","list comprehender","javascripter", "arch linux user","haskell aspirer","lisp processor","scheme-er","django user","flask-er","express fan","async promiser"];
+var labels = ["programmer","amateur hacker","machine learner","model trainer","python charmer","java drinker","avid valgrind user","still upset about hg","neural network backpropagater","vinyl record owner","head-fi'er","phd student","researcher","computer scientist","fully gdb dependent","agile, like a cheetah","los alamos national laboratory","brandeis university","university of arizona","hp vertica","hubspot","occasional gym-goer","feminist","long-time pandora subscriber","math enthusiast","database normalizer","big-o calculator","nodejs dev","angular controller","jquery hater","css novice","webfont curious","extremely color-blind","judith butler reader","bell hooks is my jam","sci-fi lover","eclipse user","wanna-be emacs guru","ruby polisher","c guy","x86 spinner","gpgpu accelerator", "go-pher", "sql querier", "npm installer","list comprehender","javascripter", "arch linux user","haskell aspirer","lisp processor","scheme-er","django user","flask-er","express fan","async promiser","data encoder","data decoder"];
 var index = 0;
 
 
