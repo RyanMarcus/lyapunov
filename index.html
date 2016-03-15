@@ -1,0 +1,84 @@
+<!--
+/*
+  Copyright 2016 Ryan Marcus
+
+  This file is part of ryan-frac-gen.
+
+  ryan-frac-gen is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  ryan-frac-gen is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+-->
+
+<html>
+  <head>
+    <title>Fractal generator</title>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+
+
+  <body>
+
+    <div id="textHolder"> 
+      <div id="textName">Ryan Marcus</div>
+      <div id="textDesc">programmer</div>
+
+
+      <div id="links" class="container">
+	<div class="row">
+	  <div class="col-sm-3">
+	    <a href="https://github.com/RyanMarcus" class="btn btn-default btn-lg btn-block"><i class="fa fa-github"></i> GitHub</a>
+	  </div>
+	  <div class="col-sm-3">
+	    <a href="https://rmarcus.info" class="btn btn-default btn-lg btn-block"><i class="fa fa-rss"></i> Blog</a>
+	  </div>
+	  <div class="col-sm-3">
+	    <a href="https://twitter.com" class="btn btn-default btn-lg btn-block"><i class="fa fa-twitter"></i> Twitter</a>
+	  </div>
+
+	   <div class="col-sm-3">
+	    <a href="https://rmarcus.info/blog/assets/RMarcusCV.pdf" class="btn btn-default btn-lg btn-block"><i class="fa fa-file"></i> CV</a>
+	  </div>
+	</div>
+      </div>
+      
+
+
+    </div>
+
+
+    <div id="cover"> </div>
+    <div id="cover2"> </div>
+    <canvas id="fract" height="450px" data-caman-hidpi-disabled="true"></canvas>
+
+
+    <div id="undertext" class="container">
+      <div class="row">
+	<p class="lead">Fractals are generated on the fly. <a href="#" onclick="javascript:location.reload()">Try another...</a></p>
+      </div>
+    </div>
+    
+  </body>
+
+  <script src="jquery-2.2.1.min.js"></script>
+  <script src="caman.full.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="render.js"></script>
+  <script src="fract.js"></script>
+</html>

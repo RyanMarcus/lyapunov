@@ -1,0 +1,126 @@
+/*
+  Copyright 2016 Ryan Marcus
+
+  This file is part of ryan-frac-gen.
+
+  ryan-frac-gen is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  ryan-frac-gen is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
+body {
+    background-color: rgb(40, 176, 255);
+    color: rgb(0,0,0);
+}
+
+
+
+@keyframes blue-fade {
+    from {opacity:1.0;)}
+    to {opacity: 0.0;}
+}
+ 
+@keyframes text-fade {
+    from {opacity:0.0;)}
+    to {opacity: 1.0;}
+}
+
+#cover {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgb(40, 176, 255);
+    z-index: 2;
+    width: 100%;
+    height: 500px;
+    opacity: 0.0;
+
+    animation-name: blue-fade;
+    animation-delay: 1s;
+    animation-duration: 2s;
+}
+
+#cover2 {
+    position: absolute;
+    left: 0px;
+    top: 425px;
+    z-index: 2;
+    width: 100%;
+    height: 25px;
+
+    background: linear-gradient(to bottom, rgba(40, 176, 255, 0), rgba(40, 176, 255, 255));
+
+
+}
+
+#textHolder {
+    position: absolute;
+    top: 75px;
+    left: 0px;
+    width: 100%;
+    margin: 0px;
+    z-index: 5;
+}
+
+#textName {
+    position: relative;
+    text-align: center;
+    font-size: 450%;
+    font-weight: 850;
+
+    margin: auto;
+    font-family: "Courier" ;
+}
+
+#textDesc {
+    position: relative;
+    text-align: center;
+    font-size: 250%;
+    font-weight: 900;
+    z-index: 5;
+    margin: auto;
+    font-family: "Courier" ;
+}
+
+
+#fract {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+#links {
+    margin-top: 100px;
+}
+
+#undertext {
+    position: absolute;
+    top: 500px;
+    left: 0px;
+
+    opacity: 0.0;
+    
+    margin: 50px;
+    font-family: "Courier";
+
+    animation: text-fade;
+    animation-delay: 2s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#undertext a {
+    color: #0112E8;
+    text-decoration: underline;
+}
