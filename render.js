@@ -18,6 +18,7 @@
 */
 
 var maximumWidth = 500;
+var maxiumumHeigh = 250;
 
 function doRender() {
 
@@ -218,6 +219,7 @@ function rotateText() {
 $(document).ready(() =>  {
     var canvas = document.getElementById("fract");
     canvas.width = Math.min(window.innerWidth, maximumWidth);
+    canvas.height = window.innerHeight;
 
     setInterval(rotateText, 2000);
 
