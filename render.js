@@ -17,8 +17,8 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-var maximumWidth = 500;
-var maxiumumHeigh = 250;
+var maximumWidth = 800;
+var maxiumumHeigh = 400;
 
 function doRender() {
 
@@ -70,7 +70,8 @@ function doRender() {
 
 	var negMults = [255, 150, 25];
 	var posMults = [40, 176, 255];
-
+	//var negMults = [36,123,160];
+	//var posMults = [240, 255, 240];
 
 	// scaling version... way too slow...
 	//var imageData = context.createImageData(canvas.width, canvas.height);
@@ -102,22 +103,23 @@ function doRender() {
 	var imageData = context.createImageData(viewportWidth, viewportHeight);
 	for (var i = 0; i < viewportWidth*viewportHeight; i++) {
 	    var mults = (viewport[i] < 0 ? negMults : posMults);
-	    var d = (viewport[i] < 0 ? Math.max(.2, 1 - Math.abs(viewport[i])) : 1 - viewport[i]);
+	    var d = (viewport[i] < 0 ? Math.max(.7, 1 - Math.abs(viewport[i])) : 1 - viewport[i]);
+
 	    
 	    imageData.data[i*4 + 0] = d * mults[0];
 	    imageData.data[i*4 + 1] = d * mults[1];
 	    imageData.data[i*4 + 2] = d * mults[2];
 	    imageData.data[i*4 + 3] = 255;
 	    
-	    imageData.data[i*4 + 0] = (0.5*imageData.data[i*4 + 0] + 0.5*prevImg.data[i*4 + 0]);
-	    imageData.data[i*4 + 1] = (0.5*imageData.data[i*4 + 1] + 0.5*prevImg.data[i*4 + 1]);
-	    imageData.data[i*4 + 2] = (0.5*imageData.data[i*4 + 2] + 0.5*prevImg.data[i*4 + 2]);
+	    imageData.data[i*4 + 0] = (0.8*imageData.data[i*4 + 0] + 0.5*prevImg.data[i*4 + 0]);
+	    imageData.data[i*4 + 1] = (0.8*imageData.data[i*4 + 1] + 0.5*prevImg.data[i*4 + 1]);
+	    imageData.data[i*4 + 2] = (0.8*imageData.data[i*4 + 2] + 0.5*prevImg.data[i*4 + 2]);
 	}
 
 
 	context.putImageData(imageData, 0, 0);
 
-	if (window.innerWidth > viewportWidth) {
+	if (window.innerWidth > viewportWidth || window.innerHeight > viewportHeight) {
 
 
 	    var newCanvas = $("<canvas>")
@@ -128,6 +130,7 @@ function doRender() {
 
 
 	    canvas.width = window.innerWidth;
+	    canvas.height = window.innerHeight;
 	    context.drawImage(newCanvas, 0, 0, canvas.width, canvas.height);
 	}
 	prevImg = imageData;
@@ -158,6 +161,7 @@ function fixCanvasSize() {
 
 
     canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     context.drawImage(newCanvas, 0, 0, canvas.width, canvas.height);
 }
 
@@ -183,7 +187,7 @@ function fixCanvasSize() {
 }*/
 
 
-var labels = ["programmer","amateur hacker","machine learner","model trainer","python charmer","java drinker","avid valgrind user","still upset about hg","neural network backpropagater","vinyl record owner","head-fi'er","phd student","researcher","computer scientist","fully gdb dependent","agile, like a cheetah","los alamos national laboratory","brandeis university","university of arizona","hp vertica","hubspot","occasional gym-goer","feminist","long-time pandora subscriber","math enthusiast","database normalizer","big-o calculator","nodejs dev","angular controller","jquery hater","css novice","webfont curious","extremely color-blind","judith butler reader","bell hooks is my jam","sci-fi lover","eclipse user","wanna-be emacs guru","ruby polisher","c guy","x86 spinner","gpgpu accelerator", "go-pher", "sql querier", "npm installer","list comprehender","javascripter", "arch linux user","haskell aspirer","lisp processor","scheme-er","django user","flask-er","express fan","async promiser","data encoder","data decoder"];
+var labels = ["programmer","amateur hacker","machine learner","model trainer","python charmer","java drinker","avid valgrind user","still upset about hg","neural network backpropagater","vinyl record owner","head-fi'er","phd student","researcher","computer scientist","fully gdb dependent","agile, like a cheetah","los alamos national labby","brandeis university judge","university of arizona wildcat","hp vertica-ite","hubspotter","occasional gym-goer","feminist","long-time pandora subscriber","math enthusiast","database normalizer","big-o calculator","nodejs dev","angular controller","jquery hater","css novice","webfont curious","extremely color-blind","judith butler reader","bell hooks is my jam","sci-fi lover","eclipse user","wanna-be emacs guru","ruby polisher","c guy","x86 spinner","gpgpu accelerator", "go-pher", "sql querier", "npm installer","list comprehender","javascripter", "arch linux user","haskell aspirer","lisp processor","scheme-er","django user","flask-er","express fan","async promiser","data encoder","data decoder"];
 var index = 0;
 
 
